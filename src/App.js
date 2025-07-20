@@ -10,6 +10,11 @@ function App() {
 
   const options = {
     preset: "seaAnemone",
+    particles: {
+        move: {
+            speed: 0.5,
+        }
+    }
   };
 
   return (
