@@ -104,6 +104,18 @@ function App() {
                 <div className = "Content">
                     <h1>Testing Header</h1>
                 </div>
+
+                <container className = "wrapper"> {/* Main Content */}
+                    <div className = "about-tab"> 
+                        <h1 class = "about-title">About Me</h1>
+                        <p class = "about-text">I'm Spoon, I'm a 19 year old software dev from the UK</p>
+
+                        <ul class = "about-list">
+                            <li><i className="langs"></i>I program in a variety of different langages, such as: Python, C#, JS, Lua, PostgreSQL</li>
+                        </ul>
+                
+                    </div>
+                </container>
             </div>
         );
     }
