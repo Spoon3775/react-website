@@ -38,6 +38,14 @@
 }
 
 #tsparticles {
+    .center-screen {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+
+    }   
     z-index: 0;
     position: absolute;
     width: 100%;
