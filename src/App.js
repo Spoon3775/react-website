@@ -1,17 +1,18 @@
 import './App.css';
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-// import { loadPolygonMaskPlugin } from "@tsparticles/plugin-polygon-mask";
+import { loadPolygonShape } from "@tsparticles/shape-polygon";
 import { loadFull } from "tsparticles";
 
 function App() {
-    const [init, setInit] = useState(false);
+    const [init, setInit] = useState(false); // State to track if particles are initialized
 
-    useEffect(() => {
-        initParticlesEngine(async (engine) => {
+    useEffect(() => { // Effect to initialize the particles engine
+
+        initParticlesEngine(async (engine) => { // Initialize the particles engine
             await loadFull(engine)
-            // await loadPolygonMaskPlugin(engine);
-        }).then(() => {
+            await loadPolygonShape(engine);
+        }).then(() => { // Once the engine is initialized, set the init state to true
             setInit(true);
         });
     }, []);
@@ -22,75 +23,60 @@ function App() {
 
     const options = useMemo(
     () => ({
+        FullScreen: {
+            enable: true,
+        },
         background: {
             color: {
-                value: "#000000",
+                value: "transparent",
             },
         },
         fpsLimit: 60,
-        interactivity: {
-            events: {
-                onClick: {
-                    enable: true,
-                    mode: "push",
-                },
-                onHover: {
-                    enable: true,
-                    mode: "repulse",
-                },
-                resize: true,
-            },
-            modes: {
-                push: {
-                    quantity: 4,
-                },
-                repulse: {
-                    distance: 200,
-                    duration: 0.4,
-                },
-            },
-        },
         particles: {
             color: {
-                value: "#ffffff",
+                value: ["#4285f4", "#34A853", "#FBBC05", "#EA4335"]
             },
             links: {
-                color: "#ffffff",
-                distance: 150,
+                color: "random",
+                distance: 200,
                 enable: true,
-                opacity: 0.5,
+                opacity: 0.6,
                 width: 1,
             },
             collisions: {
-                enable: true,
-            },
-            move: {
-                direction: "none",
-                enable: true,
-                outModes: "bounce",
-                random: false,
-                speed: 2,
-                straight: false,
+                enabled: true,
             },
             number: {
+                value: 150,
                 density: {
                     enable: true,
-                    area: 800,
+                    area: 700,
                 },
-                value: 80,
             },
-            opacity: {
-                value: 0.5,
+            move: {
+                enable: true,
+                outModes: "bounce",
+                speed: 2,
+                direction: "none",
+                random: false,
+                straight: false,
             },
             shape: {
-                type: "circle",
+                type: "circle"
             },
             size: {
                 random: true,
                 value: 5,
             },
+            opacity: {
+                value: 0.5,
+            },
+            
         },
-        detectRetina: true,
+        interactivity: {
+            // Add interactivity options here
+        }
+        
     }), []);
 
 
