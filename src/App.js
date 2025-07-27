@@ -4,6 +4,8 @@ import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadPolygonShape } from "@tsparticles/shape-polygon";
 import { loadFull } from "tsparticles";
 
+import particleOptions from './particleOptions';
+
 function App() {
     const [init, setInit] = useState(false); // State to track if particles are initialized
 
@@ -21,66 +23,8 @@ function App() {
         console.log(container);
     };
 
-    const options = useMemo(
-    () => ({
-        FullScreen: {
-            enable: true,
-        },
-        background: {
-            color: {
-                value: "transparent",
-            },
-        },
-        fpsLimit: 60,
-        particles: {
-            color: {
-                value: ["#4285f4", "#34A853", "#FBBC05", "#EA4335"]
-            },
-            links: {
-                color: "random",
-                distance: 200,
-                enable: true,
-                opacity: 0.6,
-                width: 1,
-            },
-            collisions: {
-                enabled: true,
-            },
-            number: {
-                value: 150,
-                density: {
-                    enable: true,
-                    area: 700,
-                },
-            },
-            move: {
-                enable: true,
-                outModes: "bounce",
-                speed: 2,
-                direction: "none",
-                random: false,
-                straight: false,
-            },
-            shape: {
-                type: "circle"
-            },
-            size: {
-                random: true,
-                value: 5,
-            },
-            opacity: {
-                value: 0.5,
-            },
-            
-        },
-        interactivity: {
-            // Add interactivity options here
-        }
+    const options = useMemo(() => particleOptions, []); // Load particleOptions constant from 'particleOptions.js'
         
-    }), []);
-
-
-
     if (init) {
         return (
             <div className="App">
@@ -88,7 +32,7 @@ function App() {
                 <Particles id="tsparticles" options={options} particlesLoaded={particlesLoaded} />
 
                 <div className = "Content">
-                    <h1>Testing Header</h1>
+                    <h1>Spoon3775</h1>
                 </div>
 
                 <container className = "wrapper"> {/* Main Content */}
