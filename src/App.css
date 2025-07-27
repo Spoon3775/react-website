@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: black;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -43,6 +44,7 @@
     align-items: center;
     height: 50vh;
     display: flex;
+    color: #ffffff;
 }
 
 .wrapper {
